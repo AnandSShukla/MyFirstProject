@@ -4,7 +4,7 @@ export const Footer = () => {
     <div className="footer">
       Created By
       <a
-        href="https://www.linkedin.com/in/chetannada/"
+        href="https://www.linkedin.com/in/anandsshukla/"
         target="_blank"
       >
         &copy; ANAND SHUKLA
