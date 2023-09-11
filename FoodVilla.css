@@ -1,0 +1,161 @@
+/* Select all CSS */
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  border: 1px solid red;
+  background-color: rgb(1, 163, 144);
+  border-radius: 5px;
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-weight: bold;
+}
+.nav-items {
+  display: flex;
+  padding: 0 10px 0;
+  width: auto;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+}
+.nav-items > ul > li {
+  padding: 40px 10px 0 0;
+  font-size: large;
+  cursor: pointer;
+}
+.logo {
+  width: 100px;
+  /* height:60px; */
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.restaurant-list {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin: 0px; */
+  /* padding: 5px; */
+}
+.card {
+  width: 240px;
+  border-radius: 5px;
+  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+  /* height: 300px; */
+  /* width: 280px; */
+  border: 1px solid rgb(249, 248, 248);
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card > img {
+  /* width: 270px; */
+  width: 100%;
+  height: 130px;
+  border-radius: 10px;
+}
+/* will use this css later as we have no span element */
+.card > span {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  text-align: center;
+}
+.card > span > h4:first-child {
+  display: flex;
+  align-items: center;
+  background-color: rgb(19, 176, 1);
+  border-radius: 5px;
+  padding: 0 5px 0;
+  color: white;
+}
+
+.card > span > h4:first-child .fa-star {
+  font-size: small;
+  padding: 0 10px 3px 0;
+}
+/* don't forget to remove above css and use if you want  */
+.card > h3,
+h4,
+h5 {
+  margin: 8px;
+  font-size: medium;
+
+}
+
+.footer {
+  display: flex;
+  margin: 10px;
+  height: 40px;
+  width: 100vw;
+  justify-content: center;
+    text-align: center;
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+    background-color: rgb(1, 163, 144);
+      padding: 20px 10px 20px;
+  border-radius: 5px;
+
+
+
+  /* font-size: 14px; */
+}
+
+.footer > strong {
+  padding-left: 5px;
+}
+.Body {
+  display: flex;
+  /* margin: 20px; */
+  width: 100%;
+  /* height: 80%; */
+  justify-content: space-evenly;
+  align-content: center;
+  padding: 0px 40px;
+}
+.search-container {
+  text-align: center;
+  position: relative;
+  max-width: 100%;
+  /* height: 40px; */
+  margin: 20px auto;
+}
+.search-input {
+  /* width: 500px; */
+  width: 40%;
+  box-sizing: border-box;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 15px 14px 20px;
+  border: 1px solid #aabcca;
+  border-right: 0;
+  color: #000000;
+  outline: none;
+}
+.search-container .search-btn {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #0768b3;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+  padding: 15px 22px;
+  margin-left: -4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.search-container .search-btn:hover {
+  background-color: #016034;
+}
