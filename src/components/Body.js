@@ -1,7 +1,7 @@
 import { RestaurantCard } from "./RestaurantCard";
 import { restaurantsList } from "../../constants";
 import "../../FoodVilla.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   const[searchText, setSearchText]= useState("");
@@ -23,6 +23,11 @@ const Body = () => {
     return filterData;
 
   }
+  useEffect(() => {
+    console.log("useeffect");
+  }, [searchText]);  
+  console.log("before");
+  
 
     // console.log("card  0 n", card0);
   
