@@ -14,12 +14,13 @@ const Title = () => {
 };
 //a different way of giving css
 const styleObj = { backgroundColor: "red", fontSize: "18px" };
-
+// const NameOfRest = "FOOD VILLA";
 //Nav links in Right
 export const HeaderComponent = () => {
   return (
     <div className="header">
       <Title />
+      {/* <h4>{NameOfRest}</h4> */}
 
       <div className="nav-items">
         <ul>

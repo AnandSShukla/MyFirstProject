@@ -1,5 +1,5 @@
 import { RestaurantCard } from "./RestaurantCard";
-import { restaurantsList } from "../../constants";
+import { restaurantsList, swiggy_api_URL } from "../../constants";
 import "../../FoodVilla.css";
 import { useEffect, useState } from "react";
 
@@ -23,10 +23,28 @@ const Body = () => {
     return filterData;
 
   }
-  useEffect(() => {
-    console.log("useeffect");
-  }, [searchText]);  
-  console.log("before");
+  // useEffect(() => {
+  //   console.log("useeffect");
+  // }, [searchText]);  
+  // console.log("before");
+
+  //CALL API HERE AND BUILD SEARCH FUNCTIONALITY
+    useEffect(() => {
+      //call fx to call Api
+      getRestaurants();
+    }, []);
+
+    async function getRestaurants() {
+      // swiggy_api_URL;
+      // const response = await fetch(
+      //   "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0803885&lng=72.8468571&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      // )
+      const response = await fetch(swiggy_api_URL );
+
+      const resJson = await response.json();
+      console.log("json    >>   ", response);
+
+    }
   
 
     // console.log("card  0 n", card0);
