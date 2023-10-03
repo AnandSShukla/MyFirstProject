@@ -8,7 +8,6 @@ import Shimmer from "./Shimmer";
 
 
 // Filter the restaurant data according input type
-
 const filterList = (text, objArray) => {
   const filterData =  objArray.filter((objArray) =>
      objArray?.name?.toLowerCase().includes(text.toLowerCase())
@@ -31,7 +30,9 @@ const Body = () => {
     });
 
   // const [restaurants, setReastaurants] = useState(card0);
+  //ALL RESTAURANTS DATA 
   const [restaurants, setReastaurants] = useState([]);
+  // RESTAURANTS DATA THAT WILL BE DISPLAYED IN UI
   const[copyRestData, setCopyRestData]=useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -60,8 +61,13 @@ const Body = () => {
     const response = await fetch(swiggy_api_URL );
     const resJson = await response.json();
     console.log("get restaurant fx", resJson);
-    console.log("json wa   >>   ",resJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants);
-  var checkdata =resJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants;
+    console.log(
+      "json wa   >>   ",
+      resJson?.data?.cards[5]?.card?.card?.gridElements
+    );
+
+    //HAVE TO CHANGE THIS EVERYTIME BASED ON API KA RESPONSE
+  var checkdata =resJson?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle.restaurants;
   
   console.log("checkk   ", checkdata);
     if(checkdata)
@@ -111,11 +117,9 @@ const Body = () => {
 
     // console.log("card  0 n", card0);
   
-    return  (
+    return (
       <>
-           {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
-      {restaurants.length > 0 ? (
-      <>
+        {/* if restaurants data is not fetched then display Shimmer UI after the fetched data display restaurants cards */}
         <div className="search-container">
           <input
             type="text"
@@ -141,41 +145,39 @@ const Body = () => {
           >
             Search
           </button>
-
         </div>
         {errorMessage && <div className="error-container">{errorMessage}</div>}
-        <div className="Body">
-          {/* <RestaurantCard {...card0}  /> */}
+        {restaurants.length > 0 ? (
+          <>
+            <div className="Body">
+              {/* <RestaurantCard {...card0}  /> */}
 
-          <div className="restaurant-list">
-          {/* {console.log("first rest", restaurants)} */}
-          {/* debugger; */}
+              <div className="restaurant-list">
+                {/* {console.log("first rest", restaurants)} */}
+                {/* debugger; */}
 
-
-            {/* {restaurants?.map((restaurant) => { */}
-            {copyRestData?.map((restaurant) => {
-              return (
-                <RestaurantCard
-                  key={restaurant.id}
-                  // {...restaurant.info}
-                  {...restaurant}
-                />
-              );
-            })}
-          </div>
-          {/* {RestaurantCard(card0)} */}
-          {/* <RestaurantCard card0={card0} /> */}
-          {/* <RestaurantCard />
+                {/* {restaurants?.map((restaurant) => { */}
+                {copyRestData?.map((restaurant) => {
+                  return (
+                    <RestaurantCard
+                      key={restaurant.id}
+                      // {...restaurant.info}
+                      {...restaurant}
+                    />
+                  );
+                })}
+              </div>
+              {/* {RestaurantCard(card0)} */}
+              {/* <RestaurantCard card0={card0} /> */}
+              {/* <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard /> */}
-        </div>
-      
-      </>):(
-        <Shimmer/>
-      )}
-
-       
+            </div>
+          </>
+        ) : (
+          <Shimmer />
+        )}
       </>
     );
   };
