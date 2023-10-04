@@ -34,6 +34,9 @@ export const HeaderComponent = () => {
           <li>Cart </li>
         </ul>
       </div>
+      <div></div>
+      <button>Login </button>
+      <button>Logout </button>
     </div>
   );
 };
