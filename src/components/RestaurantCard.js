@@ -7,12 +7,12 @@ export const RestaurantCard = ({
   areaName,
   avgRating,
 }, props) => {
-  console.log("props", props);
-  console.log(cloudinaryImageId,
-    name,
-    cuisines,
-    areaName,
-    avgRating,);
+  // console.log("props", props);
+  // console.log(cloudinaryImageId,
+  //   name,
+  //   cuisines,
+  //   areaName,
+  //   avgRating,);
   return (
     <>
       <div className="card">
