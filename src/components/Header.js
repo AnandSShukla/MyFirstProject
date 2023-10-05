@@ -17,7 +17,7 @@ const Title = () => {
   );
 };
 
-function authicateUser(){
+function authicateUser() {
   return true;
 }
 //a different way of giving css
@@ -25,8 +25,7 @@ const styleObj = { backgroundColor: "red", fontSize: "18px" };
 // const NameOfRest = "FOOD VILLA";
 //Nav links in Right
 export const HeaderComponent = () => {
-
-  const[isLogged, setIslogged]=useState(false);
+  const [isLogged, setIslogged] = useState(false);
   return (
     <div className="header">
       <Title />
@@ -79,7 +78,6 @@ export const HeaderComponent = () => {
               borderRadius: "13%",
               color: "black",
               background: "white",
-
             }}
           >
             LogIn{" "}
