@@ -170,81 +170,68 @@ const Body = () => {
         </>
       )}
 
+      {
+        restaurants.length > 0 ? (
+          <>
+            <div className="Body">
+              {/* <RestaurantCard {...card0}  /> */}
 
+              <div className="restaurant-list">
+                {/* {console.log("first rest", restaurants)} */}
+                {/* debugger; */}
 
-       {restaurants.length > 0 ? (
-        <>
-          <div className="Body">
-            {/* <RestaurantCard {...card0}  /> */}
-
-            <div className="restaurant-list">
-              {/* {console.log("first rest", restaurants)} */}
-              {/* debugger; */}
-
-              {/* {restaurants?.map((restaurant) => { */}
-              {copyRestData?.map((restaurant) => {
-                return (
-                  <RestaurantCard
-                    key={restaurant.id}
-                    // {...restaurant.info}
-                    {...restaurant}
-                  />
-                );
-              })}
-            </div>
-            {/* {RestaurantCard(card0)} */}
-            {/* <RestaurantCard card0={card0} /> */}
-            {/* <RestaurantCard />
+                {/* {restaurants?.map((restaurant) => { */}
+                {copyRestData?.map((restaurant) => {
+                  return (
+                    <RestaurantCard
+                      key={restaurant.id}
+                      // {...restaurant.info}
+                      {...restaurant}
+                    />
+                  );
+                })}
+              </div>
+              {/* {RestaurantCard(card0)} */}
+              {/* <RestaurantCard card0={card0} /> */}
+              {/* <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard /> */}
-          </div>
-        </>
-      ) : 
-      
-      
-      (
-        <>
-          {console.log("SHIMERING>>>>>>>>>>>.........")}
-          <Shimmer />
-        </>
-      )
+            </div>
+          </>
+        ) : (
+          <>
+            {console.log("SHIMERING>>>>>>>>>>>.........")}
+            <Shimmer />
+          </>
+        )
 
-// EARLIER I WAS RENDERING SHIMMER BADSED UPON THE RESTAURANTS ARRAY'S LENGTH BUT I NOTICED INCONSITENCIES IN THE SHIMMER SO I USED A BOOLEAN VAR TO DO SHIMMER 
-      //{restaurants.length > 0 ? (
-      //   <>
-      //     <div className="Body">
-      //       <div className="restaurant-list">
-      //         {copyRestData?.map((restaurant) => {
-      //           return (
-      //             <RestaurantCard
-      //               key={restaurant.id}
-      //               {...restaurant}
-      //             />
-      //           );
-      //         })}
-      //       </div>
-      //     </div>
-      //   </>
-      // ) : 
-      
-      
-      // (
-      //   <>
-      //     {console.log("SHIMERING>>>>>>>>>>>.........")}
-      //     <Shimmer />
-      //   </>
-      // )
-      
-      
-      // }
+        // EARLIER I WAS RENDERING SHIMMER BADSED UPON THE RESTAURANTS ARRAY'S LENGTH BUT I NOTICED INCONSITENCIES IN THE SHIMMER SO I USED A BOOLEAN VAR TO DO SHIMMER
+        //{restaurants.length > 0 ? (
+        //   <>
+        //     <div className="Body">
+        //       <div className="restaurant-list">
+        //         {copyRestData?.map((restaurant) => {
+        //           return (
+        //             <RestaurantCard
+        //               key={restaurant.id}
+        //               {...restaurant}
+        //             />
+        //           );
+        //         })}
+        //       </div>
+        //     </div>
+        //   </>
+        // ) :
 
+        // (
+        //   <>
+        //     {console.log("SHIMERING>>>>>>>>>>>.........")}
+        //     <Shimmer />
+        //   </>
+        // )
 
-
-
-
-      
-      
+        // }
       }
     </>
   );
