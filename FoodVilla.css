@@ -7,15 +7,28 @@
 }
 
 /* create global variable with :root selector */
+/* create global variable with :root selector Start*/
 :root {
   --header-bg-color: rgb(1, 163, 144);
   --footer-bg-color: rgb(1, 163, 144);
+  --body-bg-color: #e3e3e3;
+  --input-bg: #f2f2f2;
+  --input-bg-focus: #dbdbdb;
   --text-color: #000;
   --light-green: #00ad1d;
   --dark-green: #016034;
   --orange: #d97919;
+  --light-orange: #ffaf60;
+  --dark-orange: #c26100;
+  --x-dark-orange: rgb(157, 42, 1);
   --light-red: rgb(236, 56, 56);
+  --white: #fff;
+  --light-black: rgb(23, 23, 23);
+  --light-blue: #0463ac;
+  --dark-blue: #070062;
 }
+/* create global variable with :root selector End*/
+
 
 .header {
   display: flex;
@@ -314,3 +327,33 @@ h5 {
       margin: 70px auto 0px;
     }
   }
+
+
+  .error-page{
+    text-align: center;
+     background-color: var(--body-bg-color);
+     height: 100vh;
+     width:auto
+  }
+  .error-page .error-data {
+  padding: 10px 0px;
+}
+
+.error-page .error-back-home {
+  padding: 20px;
+}
+.error-page .error-back-home a {
+  text-decoration: none;
+  background-color: var(--orange);
+  color: var(--light-black);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.error-page .error-back-home a:hover {
+  background-color: var(--dark-green);
+}
+.error-page img {
+  width:70%;
+  height: auto;
+}

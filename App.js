@@ -3,11 +3,14 @@
 
 import React from "react";
 import { createRoot } from "react-dom/client";
-import {HeaderComponent} from "./src/components/Header";
+import { HeaderComponent } from "./src/components/Header";
 import Body from "./src/components/Body";
-import {Footer} from "./src/components/Footer";
+import { Footer } from "./src/components/Footer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import "./FoodVilla.css";
 import ReactDOM from "react-dom/client";
+import About from "./src/components/About";
+import ErrorPage from "./src/components/ErrorPage";
 
 /* My Food App structure will look like this, 
             1) Header
@@ -38,5 +41,21 @@ const AppLayout = () => {
   );
 };
 
+///ALWAYS PLACE BELOW OF THE APP LAYOUT
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement:<ErrorPage/>
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+ 
+]);
+
 const root = createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+// root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
