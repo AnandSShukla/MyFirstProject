@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import logo from "../assests/img/logoFoodVilla.jpeg";
+import { Link } from "react-router-dom";
 
 //made Title Component with the logo of our app
 const Title = () => {
@@ -36,53 +37,57 @@ export const HeaderComponent = () => {
           {/* see this , this way we can give the inline css  */}
           {/* <li style={{ backgroundColor: "red", fontSize: "18px" }}>Logo</li> */}
           {/* <li style={styleObj}>Logo</li> */}
-          <li>Logo</li>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact us </li>
-          <li>Cart </li>
+
+          <Link to="/">
+            {" "}
+            <li>Home</li>
+          </Link>
+
+          <Link to="/about">
+            {" "}
+            <li>About</li>
+          </Link>
+          {/* <li>Logo</li> */}
+          <Link to="/contact">
+            {" "}
+            <li>Contact</li>
+          </Link>
+
+          <li>
+            {" "}
+            {isLogged ? (
+              <button
+                onClick={() => setIslogged(false)}
+                style={{
+                  width: "100px",
+                  height: "50px",
+                  borderRadius: "13%",
+                  background: "orangered",
+                  color: "moccasin",
+                }}
+                className="logout-btn"
+              >
+                Logout{" "}
+              </button>
+            ) : (
+              <button
+                onClick={() => setIslogged(true)}
+                style={{
+                  width: "100px",
+                  height: "50px",
+                  borderRadius: "13%",
+                  color: "black",
+                  background: "white",
+                }}
+                className="login-btn"
+              >
+                LogIn{" "}
+              </button>
+            )}
+          </li>
+
+          {/* <li>Cart </li> */}
         </ul>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          height: "inherit",
-          margin: "10px 10px 10px 0px",
-        }}
-      >
-        {/* <button onClick={authicateUser}>Login </button> */}
-        {/* {isLogged ? (
-          <button onClick={setIslogged(false)}>Logout </button>
-        ) : (
-          <button onClick={setIslogged(authicateUser())}>Login </button>
-        )} */}
-        {isLogged ? (
-          <button
-            onClick={() => setIslogged(false)}
-            style={{
-              width: "100px",
-              height: "50px",
-              borderRadius: "13%",
-              background: "orangered",
-              color: "moccasin",
-            }}
-          >
-            Logout{" "}
-          </button>
-        ) : (
-          <button
-            onClick={() => setIslogged(true)}
-            style={{
-              width: "100px",
-              height: "50px",
-              borderRadius: "13%",
-              color: "black",
-              background: "white",
-            }}
-          >
-            LogIn{" "}
-          </button>
-        )}
       </div>
     </div>
   );

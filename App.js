@@ -6,12 +6,14 @@ import { createRoot } from "react-dom/client";
 import { HeaderComponent } from "./src/components/Header";
 import Body from "./src/components/Body";
 import { Footer } from "./src/components/Footer";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import "./FoodVilla.css";
 import ReactDOM from "react-dom/client";
 import About from "./src/components/About";
 import ErrorPage from "./src/components/ErrorPage";
-
+import Contact from "./src/components/Contact"; 
+import { Outlet } from "react-router-dom";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 /* My Food App structure will look like this, 
             1) Header
                 - Logo
@@ -35,7 +37,12 @@ const AppLayout = () => {
   return (
     <React.Fragment>
       <HeaderComponent />
-      <Body />
+
+      <Outlet/>
+      {/* <Body /> */}
+      {/* <Contact/> */}
+      {/* <About/> */}
+
       <Footer />
     </React.Fragment>
   );
@@ -47,13 +54,30 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement:<ErrorPage/>
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/restaurant/:id",
+        element:<RestaurantMenu/>
+      },
+    ],
   },
-  {
-    path: "/about",
-    element: <About />,
-  },
- 
+  // {
+  //   path: "/about",
+  //   element: <About />,
+  // },
 ]);
 
 const root = createRoot(document.getElementById("root"));

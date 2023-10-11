@@ -3,6 +3,7 @@ import { restaurantsList, swiggy_api_URL } from "../../constants";
 import "../../FoodVilla.css";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // Filter the restaurant data according input type
 const filterList = (text, objArray) => {
@@ -152,11 +153,16 @@ const Body = () => {
               {/* {restaurants?.map((restaurant) => { */}
               {copyRestData?.map((restaurant) => {
                 return (
-                  <RestaurantCard
+                  <Link
+                    to={"/restaurant/" + restaurant.id}
                     key={restaurant.id}
-                    // {...restaurant.info}
-                    {...restaurant}
-                  />
+                  >
+                    <RestaurantCard
+                      // key={restaurant.id}
+                      // {...restaurant.info}
+                      {...restaurant}
+                    />
+                  </Link>
                 );
               })}
             </div>
