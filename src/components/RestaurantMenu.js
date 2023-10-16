@@ -34,7 +34,8 @@ const RestaurantMenu = () => {
       // debugger;
       const response = await fetch(swiggy_menu_api_URL + id);
       const Json = await response.json();
-      const restaurantData = Json?.data?.cards
+      const restaurantData =
+        Json?.data?.cards
           ?.filter((x) => x.card)
           ?.find((x) => {
             return (
@@ -44,43 +45,22 @@ const RestaurantMenu = () => {
           })?.card?.card?.info || null;
       // debugger;
       setRestaurants(restaurantData);
-
-
-      // Set menu item data
-      // const menuItemsData = await Json?.data?.cards?.find((x) => x.groupedCard)
-      // ?.cardGroupMap;
       // debugger;
 
-      // const menuItemsDataNew = await Json?.data?.cards?.filter((x) => {
-      //   return Object.keys(x)[0] == "groupedCard";
-      // });
-      const menuItemsDataNew = await Json?.data?.cards
-        ?.find((x) => {
-          return x?.groupedCard;
-        })
-        ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
-        ?.filter((x) => {
-          return (
-            x["@type"] ==
-            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-          );
-        })
-        ?.map((x) => x.itemCards)
-        .flat();
-      // })?.cardGroupMap;
-
-      // .find((x)=>{}
-      // )
-      // ?.filter((x) => {
-      //   return Object.keys(x)[0] == "groupedCard";
-      // });
       console.log(
-        "menu data data ??????????",
-        menuItemsDataNew
-        // [0].groupedCard.cardGroupMap
+        "important data to display",
+        Json?.data?.cards
+          .find((x) => x.groupedCard)
+          ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+          ?.filter(
+            (x) =>
+              x["@type"] ==
+              "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          )
+          ?.map((x) => x.itemCards)
+          .flat()
+          ?.map((x) => x.card?.info) || []
       );
-
-      debugger;
 
       // Set menu item data
       const menuItemsData =
@@ -92,13 +72,15 @@ const RestaurantMenu = () => {
           .flat()
           .map((x) => x.card?.info) || [];
 
-          console.log("menu is not visible", menuItemsData);
+      console.log("menu is not visible", menuItemsData);
 
       const uniqueMenuItems = [];
       menuItemsData.forEach((item) => {
         if (!uniqueMenuItems.find((x) => x.id === item.id)) {
           uniqueMenuItems.push(item);
         }
+        // debugger;
+        console.log("iterating  ", uniqueMenuItems);
       });
       setMenuItems(uniqueMenuItems);
     } catch (error) {
