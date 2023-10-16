@@ -1,6 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { IMG_CDN_URL, IMG_CDN_URL_v1, swiggy_menu_api_URL } from "../../constants";
+import {
+  IMG_CDN_URL,
+  IMG_CDN_URL_v1,
+  ITEM_IMG_CDN_URL,
+  MENU_ITEM_TYPE_KEY,
+  swiggy_menu_api_URL,
+} from "../../constants";
 import Shimmer, { MenuShimmer } from "./Shimmer";
 
 const RestaurantMenu = () => {
@@ -12,7 +18,8 @@ const RestaurantMenu = () => {
 
   useEffect(() => {
     console.log("useffect");
-    const data = getRestaurants(); // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
+    const data = getRestaurants();
+    // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
   }, []);
 
   // useEffect(() => {
@@ -25,65 +32,79 @@ const RestaurantMenu = () => {
   async function getRestaurants() {
     try {
       // debugger;
-
       const response = await fetch(swiggy_menu_api_URL + id);
       const Json = await response.json();
-
-
-      // console.log("json response of menu ", Json);
-      const restaurantData =
-        Json?.data?.cards
-          ?.map((x) => x.card)
-          ?.find(
-            (x) =>
-              x &&
-              x.card["@type"] ===
-                "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
-          )?.card?.info || null;
-
-      console.log("log data", restaurantData);
+      const restaurantData = Json?.data?.cards
+          ?.filter((x) => x.card)
+          ?.find((x) => {
+            return (
+              x?.card?.card["@type"] ===
+              "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
+            );
+          })?.card?.card?.info || null;
+      // debugger;
       setRestaurants(restaurantData);
-      console.log("Restaurants Data:", restaurantData);
 
 
       // Set menu item data
       // const menuItemsData = await Json?.data?.cards?.find((x) => x.groupedCard)
-        // ?.cardGroupMap;
-;
-
-debugger;
-        const menuItemsDataNew = await Json?.data?.cards?.filter((x) => {
-          console.log('nyam nyam: ', x);
-          return Object.keys(x)[0] == "groupedCard";
-        })
-        console.log("menu data data ??????????", menuItemsDataNew[0].groupedCard.cardGroupMap);
-
-
+      // ?.cardGroupMap;
       // debugger;
 
-      //     .find((x) => x.groupedCard)
-      //     ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
-      //     ?.filter(
-      //       (x) =>
-      //         x["@type"] ==
-      //         "type.googleapis.com/swiggy.presentation.food.v2.MenuVegFilterAndBadge"
-      //     )
-      //     ?.map((x) => x.itemCards)
-      //     .flat()
-      //     .map((x) => x.card?.info) || [];
-
-      // const uniqueMenuItems = [];
-      // menuItemsData.forEach((item) => {
-      //   if (!uniqueMenuItems.find((x) => x.id === item.id)) {
-      //     uniqueMenuItems.push(item);
-      //   }
+      // const menuItemsDataNew = await Json?.data?.cards?.filter((x) => {
+      //   return Object.keys(x)[0] == "groupedCard";
       // });
-      // setMenuItems(uniqueMenuItems);
-      // console.log("Menu Items:", uniqueMenuItems);
+      const menuItemsDataNew = await Json?.data?.cards
+        ?.find((x) => {
+          return x?.groupedCard;
+        })
+        ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+        ?.filter((x) => {
+          return (
+            x["@type"] ==
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          );
+        })
+        ?.map((x) => x.itemCards)
+        .flat();
+      // })?.cardGroupMap;
+
+      // .find((x)=>{}
+      // )
+      // ?.filter((x) => {
+      //   return Object.keys(x)[0] == "groupedCard";
+      // });
+      console.log(
+        "menu data data ??????????",
+        menuItemsDataNew
+        // [0].groupedCard.cardGroupMap
+      );
+
+      debugger;
+
+      // Set menu item data
+      const menuItemsData =
+        Json?.data?.cards
+          .find((x) => x.groupedCard)
+          ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
+          ?.filter((x) => x["@type"] == MENU_ITEM_TYPE_KEY)
+          ?.map((x) => x.itemCards)
+          .flat()
+          .map((x) => x.card?.info) || [];
+
+          console.log("menu is not visible", menuItemsData);
+
+      const uniqueMenuItems = [];
+      menuItemsData.forEach((item) => {
+        if (!uniqueMenuItems.find((x) => x.id === item.id)) {
+          uniqueMenuItems.push(item);
+        }
+      });
+      setMenuItems(uniqueMenuItems);
     } catch (error) {
       console.log(error);
-       setMenuItems([]);
-       setRestaurants(null);
+      setMenuItems([]);
+      setRestaurants(null);
     }
   }
 
