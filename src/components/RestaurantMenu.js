@@ -8,6 +8,8 @@ import {
   swiggy_menu_api_URL,
 } from "../../constants";
 import Shimmer, { MenuShimmer } from "./Shimmer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const RestaurantMenu = () => {
   const params = useParams();
@@ -106,29 +108,35 @@ const RestaurantMenu = () => {
           src={IMG_CDN_URL + restaurants?.cloudinaryImageId}
           alt={restaurants?.name}
         />
-      </div>
 
-      <div className="restaurant-summary-details">
-        <h2 className="restaurant-title">{restaurants?.name}</h2>
-        <p className="restaurant-tags">{restaurants?.cuisines?.join(", ")}</p>
-        <div className="restaurant-details">
-          <div
-            className="restaurant-rating"
-            style={
-              restaurants?.avgRating < 4
-                ? { backgroundColor: "var(--light-red)" }
-                : restaurants?.avgRating === "--"
-                ? { backgroundColor: "white", color: "black" }
-                : { color: "white" }
-            }
-          >
-            <i className="fa-solid fa-star"></i>
-            <span>{restaurants?.avgRating}</span>
+        <div className="restaurant-summary-details">
+          <h2 className="restaurant-title">{restaurants?.name}</h2>
+          <p className="restaurant-tags">{restaurants?.cuisines?.join(", ")}</p>
+          <div className="restaurant-details">
+            <div
+              className="restaurant-rating"
+              style={
+                restaurants?.avgRating < 4
+                  ? { backgroundColor: "var(--light-red)" }
+                  : restaurants?.avgRating === "--"
+                  ? { backgroundColor: "white", color: "black" }
+                  : { color: "white" }
+              }
+            >
+              {/* <FontAwesomeIcon icon="fas fa-star" /> */}
+
+              <FontAwesomeIcon
+                icon={faStar}
+                className="fas fa-star"
+                //   style={{ color: "blue" }}
+              />
+              <span>{restaurants?.avgRating}</span> 
+            </div>
+            <div className="restaurant-rating-slash">|</div>
+            <div>{restaurants?.sla?.slaString}</div>
+            <div className="restaurant-rating-slash">|</div>
+            <div>{restaurants?.costForTwoMessage}</div>
           </div>
-          <div className="restaurant-rating-slash">|</div>
-          <div>{restaurants?.sla?.slaString}</div>
-          <div className="restaurant-rating-slash">|</div>
-          <div>{restaurants?.costForTwoMessage}</div>
         </div>
       </div>
 

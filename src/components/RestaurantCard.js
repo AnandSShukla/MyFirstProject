@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { IMG_CDN_URL } from "../../constants";
 import "../../FoodVilla.css";
 export const RestaurantCard = (
@@ -22,22 +24,29 @@ export const RestaurantCard = (
         <h5>{areaName}</h5>
 
         <span>
-          {" "}
           <h4
             style={
               avgRating < 4
-                ? {
-                    backgroundColor: "var(--light-red)",
-                    // backgroundColor: "red"
-                  }
+                ? { backgroundColor: "var(--light-red)" }
                 : avgRating === "--"
                 ? { backgroundColor: "white", color: "black" }
                 : { color: "white" }
             }
           >
-            <i className="fa-solid fa-star"></i>
-
+            {/* <i className="fa-solid fa-star"></i> */}
+            <FontAwesomeIcon
+              icon={faStar}
+              className="fa-solid fa-star"
+              // size="xs"
+            />
             {avgRating}
+
+            {/* <FontAwesomeIcon
+              icon={faStar}
+              className="fa-star"
+              // size="xs"
+            />
+            {avgRating} */}
           </h4>
           <h4>•</h4>
           <h4>{sla?.lastMileTravelString ?? "2.0 km"}</h4>
