@@ -45,7 +45,9 @@ a {
   align-items: center;
   /* width: 99%; */
   width: 100vw;
-  height: 85px;
+  height: 80px;
+  /* height: 85px; change later */
+
   background-color: var(--header-bg-color);
   border-radius: 5px;
   box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
@@ -67,11 +69,12 @@ a {
 }
 
 .logo {
-  /* width: 100px; */
-  /* padding: 10px 0 10px 15px; */
   width: 80px;
   /* padding: 10px 0px 10px 15px; */
-  padding: 4px 0px 0px 12px;
+  /* padding: 4px 0px 0px 12px; */
+  border-radius: 100%;
+  padding: 10px 6px;
+  margin:2px;
 
   /* height:60px; */
   /* padding-left: 10px; */
@@ -96,13 +99,8 @@ a {
 .nav-items > ul > li {
   padding: 10px;
 }
-.nav-items > ul > a li {
-  /* padding: 40px 10px 0 0; */
-  padding: 12px;
-  font-size: large;
-  cursor: pointer;
-}
-.nav-items > ul > a li:hover {
+
+.nav-items > ul > li:hover {
   background-color: var(--orange);
   border-radius: 5px;
   cursor: pointer;
@@ -114,25 +112,12 @@ a {
   border: none;
   border-radius: 5px;
   background-color: Transparent;
+  /* background-color: none; */
   font-size: inherit;
   font-weight: 700;
   cursor: pointer;
 }
 
-/* Apply styles when hovering over .logout-btn or .login-btn */
-.nav-items > ul > li .logout-btn:hover,
-.nav-items > ul > li .login-btn:hover {
-  background-color: #00ad1d;
-  /* background-color: var(--orange); */
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* .nav-items > ul > li:hover {
-  background-color: var(--orange);
-  border-radius: 5px;
-  cursor: pointer;
-} */
 
 /* nav items CSS End*/
 /* Header CSS End*/
@@ -141,7 +126,7 @@ a {
 
 /* SEARCH CONTAINER  */
 .search-container {
-  margin: 145px auto 20px;
+  margin: 120px auto 20px;
   text-align: center;
   max-width: 100%;
   position: relative;
