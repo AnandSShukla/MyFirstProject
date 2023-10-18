@@ -1,11 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon you want to use
+import { Outlet } from "react-router-dom";
+// import Profile from "./Profile";
+import Profile from "./Profile";
+import ProfileClassComp from '../components/ProfileClass';
 
 const About = () => {
   return (
     <>
-      <div style={{ margin: "100px 40px 20px", display: "flex" }}>
+      <div
+        style={{
+          margin: "100px 40px 20px",
+          display: "flex",
+          // , height: "80vh"
+        }}
+      >
         <FontAwesomeIcon
           icon={faStar}
           //   style={{ color: "blue" }}
@@ -35,6 +45,21 @@ const About = () => {
           size="2xl"
         />
         <h1>ABOUT US PAGE</h1>
+      </div>
+      <div>
+        {/* Childrens are always rendered inside an Outlet. 
+        Outlet Should always be created in Parent.  */}
+        {/* <Outlet/> */}
+
+        {/* or just place the child directly  , but child will bw always there even at the parents url and children url both */}
+        <Profile
+          name="ANAND SHUKLA"
+          xyz="xyz"
+        />
+        <ProfileClassComp
+          name="ANAND SHUKLA"
+          xyz="xyz"
+        />
       </div>
     </>
   );

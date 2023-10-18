@@ -14,6 +14,9 @@ import ErrorPage from "./src/components/ErrorPage";
 import Contact from "./src/components/Contact"; 
 import { Outlet } from "react-router-dom";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import Profile from "./src/components/ProfileClass";
+import ProfileFunctionalComp from "./src/components/Profile";
+// import Profile from "./src/components/Profile";
 /* My Food App structure will look like this, 
             1) Header
                 - Logo
@@ -57,8 +60,22 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/about",
-        element: <About />,
+        // path: "/about",
+        path: "/about", //both will work because it's going to be append to URL only
+        //parentPath/{Path} => http://localhost:1234/about
+        element: <About />, // "/" means from the root, root is localHost Applayout
+        children: [
+          {
+            path: "profile", //here don't use / to subChild otherwise it will get appended to http://localhost:1234/profile like this but we want http://localhost:1234/about/profile
+            // element: <Profile />,
+            element: <Profile />,
+          },
+          {
+            path: "profileFx", //here don't use / to subChild otherwise it will get appended to http://localhost:1234/profile like this but we want http://localhost:1234/about/profile
+            // element: <Profile />,
+            element: <ProfileFunctionalComp />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -70,7 +87,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurant/:id",
-        element:<RestaurantMenu/>
+        element: <RestaurantMenu />,
       },
     ],
   },
