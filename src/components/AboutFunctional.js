@@ -4,9 +4,9 @@ import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the specif
 import { Outlet } from "react-router-dom";
 // import Profile from "./Profile";
 import Profile from "./Profile";
-import ProfileClassComp from '../components/ProfileClass';
+import ProfileClassComp from "./ProfileClass";
 
-const About = () => {
+const AboutFunctional = () => {
   return (
     <>
       <div
@@ -16,7 +16,7 @@ const About = () => {
           // , height: "80vh"
         }}
       >
-        <FontAwesomeIcon
+        {/* <FontAwesomeIcon
           icon={faStar}
           //   style={{ color: "blue" }}
         />
@@ -39,12 +39,12 @@ const About = () => {
         <FontAwesomeIcon
           icon={faStar}
           size="xl"
-        />
+        /> */}
         <FontAwesomeIcon
           icon={faStar}
           size="2xl"
         />
-        <h1>ABOUT US PAGE</h1>
+        <h1>ABOUT US PAGE </h1>
       </div>
       <div>
         {/* Childrens are always rendered inside an Outlet. 
@@ -64,4 +64,4 @@ const About = () => {
     </>
   );
 };
-export default About;
+export default AboutFunctional;

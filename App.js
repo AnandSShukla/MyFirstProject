@@ -9,9 +9,10 @@ import { Footer } from "./src/components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import "./FoodVilla.css";
 import ReactDOM from "react-dom/client";
-import About from "./src/components/About";
+// import About from "./src/components/AboutFunctional";
+import About from './src/components/AboutCls'
 import ErrorPage from "./src/components/ErrorPage";
-import Contact from "./src/components/Contact"; 
+import Contact from "./src/components/Contact";
 import { Outlet } from "react-router-dom";
 import RestaurantMenu from "./src/components/RestaurantMenu";
 import Profile from "./src/components/ProfileClass";
@@ -41,7 +42,7 @@ const AppLayout = () => {
     <React.Fragment>
       <HeaderComponent />
 
-      <Outlet/>
+      <Outlet />
       {/* <Body /> */}
       {/* <Contact/> */}
       {/* <About/> */}
