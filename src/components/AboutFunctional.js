@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import ProfileClassComp from "./ProfileClass";
 
 const AboutFunctional = () => {
+  console.log("functional about parent ");
   return (
     <>
       <div

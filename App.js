@@ -9,8 +9,8 @@ import { Footer } from "./src/components/Footer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import "./FoodVilla.css";
 import ReactDOM from "react-dom/client";
-// import About from "./src/components/AboutFunctional";
-import About from './src/components/AboutCls'
+import AboutFunctional from "./src/components/AboutFunctional";
+import About from "./src/components/AboutCls";
 import ErrorPage from "./src/components/ErrorPage";
 import Contact from "./src/components/Contact";
 import { Outlet } from "react-router-dom";
@@ -65,6 +65,7 @@ const appRouter = createBrowserRouter([
         path: "/about", //both will work because it's going to be append to URL only
         //parentPath/{Path} => http://localhost:1234/about
         element: <About />, // "/" means from the root, root is localHost Applayout
+        // element: <AboutFunctional />,
         children: [
           {
             path: "profile", //here don't use / to subChild otherwise it will get appended to http://localhost:1234/profile like this but we want http://localhost:1234/about/profile

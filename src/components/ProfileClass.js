@@ -11,23 +11,22 @@ class Profile extends Component {
     this.state = {
       count: 0,
       count2: 2,
-      image:"",
-      userName:""
+      image: "",
+      userName: "",
     };
     //React Lifecycle
     // Following is the order of lifecycle methods calls in Class Based Components:
     // constructor()
     // render ()
     // componentDidMount()
-    console.log("Child Constructor props " + this.props.name);
+    console.log("Child Constructor  " + this.props.name);
   }
 
-
   async componentDidMount() {
-    console.log("Child componentDidMount ", this.props.name);
+    console.log("Child componentDidMount  after render", this.props.name);
     const data = await fetch("https://api.github.com/users/AnandSShukla");
-    const Json = await data.json();    //best place to make API CALL like useEffect in functional component
-   this.setState({ image: Json?.avatar_url, userName: Json?.login });
+    const Json = await data.json(); //best place to make API CALL like useEffect in functional component
+    this.setState({ image: Json?.avatar_url, userName: Json?.login });
     //first render it and then update it later like useEffect
   }
 
@@ -35,11 +34,11 @@ class Profile extends Component {
 
   //mandatory render method return some jsx. whatever we return here gets injected to DOM
   render() {
-    console.log("Child render props", this.props.name);
-        console.log("Child render state", this.state);
+    // console.log("Child render props", this.props.name);
+    console.log("Child render state", this.state);
 
     //destrucure this.state
-    const { count, count2, userName, image} = this.state;
+    const { count, count2, userName, image } = this.state;
     return (
       <div style={{ height: "400px", border: "1px solid red", margin: "20px" }}>
         <h1>HELLO CLASS BASED COMPONET </h1>

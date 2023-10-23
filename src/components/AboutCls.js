@@ -7,47 +7,46 @@ import { Outlet } from "react-router-dom";
 
 export class About extends Component {
   constructor(props) {
+    // debugger;
     //mandatory to write props and super(props)
     super(props);
 
     this.state = {
-      UserInfo:{
-        name:"Parent's Default Name",
-        location:"Parent Location"
-      }
+      UserInfo: {
+        name: "Parent's Default Name",
+        location: "Parent Location",
+      },
     };
     //React Lifecycle
     // Following is the order of lifecycle methods calls in Class Based Components:
     // constructor()
     // render ()
     // componentDidMount()
-    console.log("Parent Constructor");
+    console.log("Parent Constructor runs first with its local state ");
   }
 
-
   ///while calling API WE HAVE TO MAKE THIS ASYNC , WHEREAS IN THE USEEFFECT WE CAN'T MAKE IT ASYCH. you cannot do this
-//   useEffect(asyc () => {
-//     return () => {
-//      
-//     }
-//   }, [third])
-  
+  //   useEffect(asyc () => {
+  //     return () => {
+  //
+  //     }
+  //   }, [third])
+
   async componentDidMount() {
     //best place to make API CALL like useEffect in functional component,
     const data = await fetch("https://api.github.com/users/AnandSShukla");
     const Json = await data.json();
 
-    console.log("Parent componentDidMount  ", Json);
+    console.log("Parent componentDidMount  at last ", Json);
 
     //this will update at last
     this.setState({
       UserInfo: { name: Json?.login, location: Json?.id },
     });
-    
   }
 
   render() {
-    console.log("Parent render");
+    console.log("Parent render runs 2nd ");
     return (
       <>
         <div
@@ -68,7 +67,7 @@ export class About extends Component {
         Outlet Should always be created in Parent.  */}
           {/* <Outlet/> */}
 
-          {/* or just place the child directly  , but child will bw always there even at the parents url and children url both */}
+          {/* or just place the child directly  , but child will be always there even at the parents url and children url both */}
           {/* <Profile
             name="ANAND SHUKLA"
             xyz="xyz"
