@@ -1,3 +1,6 @@
+// this is not used by me , instead we are using class based component in the place of this functional based component 
+
+
 import { useState } from "react";
 
 const Profile = (props) => {

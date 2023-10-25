@@ -846,5 +846,6 @@ export const RESTAURANT_TYPE_KEY = "type.googleapis.com/swiggy.presentation.food
 export const LOGO_cdn =
   "https://obs.line-scdn.net/0m0339dd5b72513e8a8d6127b836e5ecf1e128f1da5cb7?0";
 
-
+export const GIT_USERS_URL = "https://api.github.com/users/";
+export const GIT_USERNAME = "ANANDSSHUKLA";
 

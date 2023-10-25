@@ -1,0 +1,29 @@
+so we are clear now that react lifecycle runs in 2 phase that is render phase and commit phase. so react will first batch up one phase instaed of going directly to the next phase. for example if there are multiple children and one after another then react will first complete the render phase for all of them then only it moves to the commit phase. 
+
+
+
+in render phase we know that constructor and render are there and in commit phase DOM updation and componentDidMount is there. 
+async vs defer scripts -: async will download script in parallel to the parsing and when it's downloaded it will block the DOM and execute the script first then again resume the DOM parsing . 
+But defer will not block the DOM but it will be downloaded in parallel to the parsing but executed only after the parsing has finished.
+
+one more difference is that asyc will not wait for any scripts it'll execute immediately , but defer waits for all the scripts and executes them one by one.
+
+
+Aysych and Await - : used in functions which may take some time to return value. async functions return a promise as a placeholder which is then filled with actual data after completion of the operation. also async function do no blocks any other line of code which are below it, other code will be executed in parallel to the async function. means user will not see any delay in the UI because DOM is getting updated simultaneously. 
+await used inside of async functions to stop/wait the function for the promise, if we do not use await the function will not wait for the data and it will continue which leads to inconsistency in the data (missing data ).
+
+
+
+
+due to await keyword and its a async function so as first childs componentDidMount runs then data takes some time to come so meanwhile parents componentDidMount runs in parallel. because we already said to u that async do not blocks other functions or codes, that means other line of code will execute in parallel to the async function. that is why we see parents  componentDidMount first before the data logged on console. 
+
+when we do this.setState then the UPDATE CYCLE triggers which re renders the component with the help of the reconcilliation process 
+
+when we make a API call the component is already mounted , we just update it. so it will call render method again and update the DOM then it will call a new method named componentDidUpdate.
+
+Mounting Cycle = constructor > render > dom update > componentDidMount
+ Updating Cycle = Updating > render > update Dom > componentDidUpdate
+componentDidMount will be called after 1st render
+componentDidUpdate is called after every next render
+
+Unmounting triggers when the component is being destroyed. when we navigate to other component then the previous component in the DOM is destroyed and componentWillUnmount() is called. 

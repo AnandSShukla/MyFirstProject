@@ -22,7 +22,7 @@ export class About extends Component {
     // constructor()
     // render ()
     // componentDidMount()
-    console.log("Parent Constructor runs first with its local state ");
+    // console.log("Parent Constructor runs first with its local state ");
   }
 
   ///while calling API WE HAVE TO MAKE THIS ASYNC , WHEREAS IN THE USEEFFECT WE CAN'T MAKE IT ASYCH. you cannot do this
@@ -33,20 +33,19 @@ export class About extends Component {
   //   }, [third])
 
   async componentDidMount() {
+    // console.log("PARENT COMPONENT DID MOUNT ");
     //best place to make API CALL like useEffect in functional component,
-    const data = await fetch("https://api.github.com/users/AnandSShukla");
-    const Json = await data.json();
-
-    console.log("Parent componentDidMount  at last ", Json);
-
-    //this will update at last
-    this.setState({
-      UserInfo: { name: Json?.login, location: Json?.id },
-    });
+    // const data = await fetch("https://api.github.com/users/AnandSShukla");
+    // const Json = await data.json();
+    // console.log("Parent componentDidMount  at last ", Json);
+    // //this will update at last
+    // this.setState({
+    //   UserInfo: { name: Json?.login, location: Json?.id },
+    // });
   }
 
   render() {
-    console.log("Parent render runs 2nd ");
+    // console.log("Parent render runs 2nd ");
     return (
       <>
         <div
@@ -72,15 +71,15 @@ export class About extends Component {
             name="ANAND SHUKLA"
             xyz="xyz"
           /> */}
-          <ProfileClass
+          {/* <ProfileClass
             // name="first child"
             name={this.state?.UserInfo?.name}
-            xyz={this.state?.UserInfo?.location}
-          />
+            location={this.state?.UserInfo?.location}
+          /> */}
           {/* suppose multiple childs are there then what will be the sequence of react lifecycle */}
           <ProfileClass
             name={this.state?.UserInfo?.name}
-            xyz={this.state?.UserInfo?.location}
+            location={this.state?.UserInfo?.location}
           />
         </div>
       </>
