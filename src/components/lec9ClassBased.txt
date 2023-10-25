@@ -1,18 +1,14 @@
-so we are clear now that react lifecycle runs in 2 phase that is render phase and commit phase. so react will first batch up one phase instaed of going directly to the next phase. for example if there are multiple children and one after another then react will first complete the render phase for all of them then only it moves to the commit phase. 
-
-
+so we are clear now that react lifecycle runs in 2 phase that is render phase and commit phase. so react will first batch up one phase instead of going directly to the next phase. for example if there are multiple children  one after another then react will first complete the render phase for all of them then only it moves to the commit phase. 
 
 in render phase we know that constructor and render are there and in commit phase DOM updation and componentDidMount is there. 
 async vs defer scripts -: async will download script in parallel to the parsing and when it's downloaded it will block the DOM and execute the script first then again resume the DOM parsing . 
 But defer will not block the DOM but it will be downloaded in parallel to the parsing but executed only after the parsing has finished.
 
-one more difference is that asyc will not wait for any scripts it'll execute immediately , but defer waits for all the scripts and executes them one by one.
+one more difference is that async will not wait for any scripts it'll execute immediately , but defer waits for all the scripts and executes them one by one.
 
 
 Aysych and Await - : used in functions which may take some time to return value. async functions return a promise as a placeholder which is then filled with actual data after completion of the operation. also async function do no blocks any other line of code which are below it, other code will be executed in parallel to the async function. means user will not see any delay in the UI because DOM is getting updated simultaneously. 
 await used inside of async functions to stop/wait the function for the promise, if we do not use await the function will not wait for the data and it will continue which leads to inconsistency in the data (missing data ).
-
-
 
 
 due to await keyword and its a async function so as first childs componentDidMount runs then data takes some time to come so meanwhile parents componentDidMount runs in parallel. because we already said to u that async do not blocks other functions or codes, that means other line of code will execute in parallel to the async function. that is why we see parents  componentDidMount first before the data logged on console. 
@@ -29,7 +25,7 @@ componentDidUpdate is called after every next render
 Unmounting triggers when the component is being destroyed. when we navigate to other component then the previous component in the DOM is destroyed and componentWillUnmount() is called. 
 
 disclaimer : useEffect and React LifeCycle methods are not the same. never ever say that.
- we have many functionalities given in useEffect hook which make the task easier as compared to the the older way. we know that useEffect with empty dependency array runs only once , so how will you achieve this in the CBC(claass badsed components ). for that we know we will use componentDidMount which runs only once . if we pass a dependency then useEffect runs on every changes to that dependency. to achieve this in CBC we used to make componentDidUpdate function with prevState and CurrentState as a parameter and inside that we use multiple if else loop to compare previous state with current state and write code accordingly.
+ we have many functionalities given in useEffect hook which make the task easier as compared to the the older way. we know that useEffect with empty dependency array runs only once , so how will you achieve this in the CBC(claass based components ). for that we know we will use componentDidMount which runs only once . if we pass a dependency then useEffect runs on every changes to that dependency. to achieve this in CBC we used to make componentDidUpdate function with prevState and CurrentState as a parameter and inside that we use multiple if else loop to compare previous state with current state and write code accordingly.
 
  there use to be a complete mess, thanks to useEffect. 
 
@@ -37,14 +33,14 @@ disclaimer : useEffect and React LifeCycle methods are not the same. never ever 
  what is the useCase of componentWillUnmount ?
  suppose we had a setInterval()  in componentDidMount of 1seconds then it will start after every second whether user navigates to any other pages the setInterval is running continuously. when user comes back to same page then a new setInterval gets created , this will heavily affect yours apps performance. so to avoid this we need to claer such timers and intervals hanging around. 
 
- this is bigges cons of Single Page Application , we are not chsnging pages but moving to one component to another inside the single page only. 
+ this is biggest cons of Single Page Application , we are not changing pages but moving to one component to another inside the single page only. 
 
  so to clear such intervals our hero componentWillUnmount comes to the picture which runs when user navigates from one component to another. so always attach the intervals to the this keyword and inside of the componentWillUnmount just clear it using clearInterval
 
 
  componentDidMount (){
     this.Timer = setInterval(()=>{
-        console.log("hello)
+        console.log("hello")
     }, 1000)
  }
 
@@ -53,3 +49,18 @@ disclaimer : useEffect and React LifeCycle methods are not the same. never ever 
  }
 
  so if inside useEffect if there is such setInterval that will also run infinitely even if you navigate to other components , there also you have to clear Interval to stop it. there is a callback function inside useEffect to do so.  
+
+ useEffect(()=>{
+    const Timer = setInterval(()=>{
+        console.log("hello")
+    }, 1000);
+    return ()=>{
+      clearInterval(Timer)
+    }
+
+
+    this much knowledge is enough for class based component. 
+
+
+   
+ })

@@ -45,22 +45,22 @@ const AboutFunctional = () => {
           icon={faStar}
           size="2xl"
         />
-        <h1>ABOUT US PAGE </h1>
+        <h1>ABOUT US PAGE Functional Component</h1>
       </div>
       <div>
         {/* Childrens are always rendered inside an Outlet. 
         Outlet Should always be created in Parent.  */}
-        {/* <Outlet/> */}
+        <Outlet/>
 
         {/* or just place the child directly  , but child will bw always there even at the parents url and children url both */}
-        <Profile
+        {/* <Profile
           name="ANAND SHUKLA"
           xyz="xyz"
         />
         <ProfileClassComp
           name="ANAND SHUKLA"
           xyz="xyz"
-        />
+        /> */}
       </div>
     </>
   );

@@ -36,6 +36,11 @@ class Profile extends Component {
     //setting state trigers rerender / update cycle
     this.setState({ UserInfo: Json });
 
+    this.Timer = setInterval(()=>{
+      console.log("hello")
+  }, 1000)
+
+
     // this.setState({ image: Json?.avatar_url, userName: Json?.login });
     //first render it and then update it later like useEffect
     console.log("Child  ");
@@ -47,6 +52,7 @@ class Profile extends Component {
 
   componentWillUnmount(){
         console.log("  componentWillUnmount");
+        clearInterval(this.Timer)
 
 
   }
@@ -62,7 +68,7 @@ class Profile extends Component {
     // const { count, count2, userName, image } = this.state;
     return (
       <div style={{ height: "400px", border: "1px solid red", margin: "20px" }}>
-        <h1>Profile Class Based Component </h1>
+        <h1>Profile Class Component </h1>
         {/* <h3>Count state : {this.state.count}</h3> */}
         {/* <h3>Count state this.state : {count}</h3> */}
         {/* <h3>Count state 2: {this.state.count2}</h3> */}
