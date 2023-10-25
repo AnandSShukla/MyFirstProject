@@ -28,7 +28,7 @@ class ProfileUserClass extends Component {
           title={name}
         />
         {/* <p className="profile-user-bio">{bio}</p> */}
-        <p className="profile-user-bio">Bio data</p>
+        <p className="profile-user-bio">{bio}</p>
 
         <SocialProfileClass />
       </div>

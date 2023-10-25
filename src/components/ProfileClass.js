@@ -15,7 +15,7 @@ class Profile extends Component {
       count: 0,
       userInfo: {
         name: "",
-        image: "",
+        bio: "",
       },
       count2: 2,
       image: "",
@@ -41,7 +41,7 @@ class Profile extends Component {
     //first render it and then update it later like useEffect
   }
 
-    componentDidUpdate() {
+  componentDidUpdate() {
     // console.log("Profile-Parent componentDidUpdate");
   }
 
@@ -68,13 +68,13 @@ class Profile extends Component {
           </div>
           <div className="repo-container">
             <h1 className="repo-title">
-              Food<span>Fire</span> App Repository
+              Food<span>Villa</span> App Repository
             </h1>
             <ProfileRepoClass followers={userInfo.followers} />
             {/* Passing props followers from parent to child */}
           </div>
         </div>
-{/*         
+        {/*         
         <div
           style={{ height: "400px", border: "1px solid red", margin: "20px" }}
         >
