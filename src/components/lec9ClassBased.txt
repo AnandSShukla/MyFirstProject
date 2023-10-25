@@ -27,3 +27,29 @@ componentDidMount will be called after 1st render
 componentDidUpdate is called after every next render
 
 Unmounting triggers when the component is being destroyed. when we navigate to other component then the previous component in the DOM is destroyed and componentWillUnmount() is called. 
+
+disclaimer : useEffect and React LifeCycle methods are not the same. never ever say that.
+ we have many functionalities given in useEffect hook which make the task easier as compared to the the older way. we know that useEffect with empty dependency array runs only once , so how will you achieve this in the CBC(claass badsed components ). for that we know we will use componentDidMount which runs only once . if we pass a dependency then useEffect runs on every changes to that dependency. to achieve this in CBC we used to make componentDidUpdate function with prevState and CurrentState as a parameter and inside that we use multiple if else loop to compare previous state with current state and write code accordingly.
+
+ there use to be a complete mess, thanks to useEffect. 
+
+
+ what is the useCase of componentWillUnmount ?
+ suppose we had a setInterval()  in componentDidMount of 1seconds then it will start after every second whether user navigates to any other pages the setInterval is running continuously. when user comes back to same page then a new setInterval gets created , this will heavily affect yours apps performance. so to avoid this we need to claer such timers and intervals hanging around. 
+
+ this is bigges cons of Single Page Application , we are not chsnging pages but moving to one component to another inside the single page only. 
+
+ so to clear such intervals our hero componentWillUnmount comes to the picture which runs when user navigates from one component to another. so always attach the intervals to the this keyword and inside of the componentWillUnmount just clear it using clearInterval
+
+
+ componentDidMount (){
+    this.Timer = setInterval(()=>{
+        console.log("hello)
+    }, 1000)
+ }
+
+ componentWillUnmount(){
+    clearInterval(this.Timer)
+ }
+
+ so if inside useEffect if there is such setInterval that will also run infinitely even if you navigate to other components , there also you have to clear Interval to stop it. there is a callback function inside useEffect to do so.  
