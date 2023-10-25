@@ -846,5 +846,24 @@ export const RESTAURANT_TYPE_KEY = "type.googleapis.com/swiggy.presentation.food
 export const LOGO_cdn =
   "https://obs.line-scdn.net/0m0339dd5b72513e8a8d6127b836e5ecf1e128f1da5cb7?0";
 
+  // Github Authorization Token
+export const options = {
+  method: "GET",
+  headers: {
+    Authorization: "",
+  },
+};  
+
+  export const Github_API_URL = "https://api.github.com/users/"
+
+  export const Github_UserName = "AnandSShukla";
+
+  export const Github_Repository_Name = "MyFirstProject";
 
 
+
+// Social Media Links
+export const Linkedin_Link = "https://www.linkedin.com/in/AnandSShukla/";
+export const Twitter_Link = "https://twitter.com/Anandshukla6800";
+export const Github_Link = "https://github.com/AnandSShukla";
+export const Email_Link = "mailto:anandshukla6812@gmail.com";

@@ -60,8 +60,10 @@ export class About extends Component {
             icon={faStar}
             size="2xl"
           />
-          <h1>ABOUT US PAGE 1</h1>
+          <h1>ABOUT US PAGE ( class based )</h1>
         </div>
+
+        
         <div>
           {/* Childrens are always rendered inside an Outlet. 
         Outlet Should always be created in Parent.  */}

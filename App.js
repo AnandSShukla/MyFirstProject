@@ -61,11 +61,11 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        // path: "/about",
+        // path: "about",
         path: "/about", //both will work because it's going to be append to URL only
         //parentPath/{Path} => http://localhost:1234/about
-        element: <About />, // "/" means from the root, root is localHost Applayout
-        // element: <AboutFunctional />,
+        // element: <About />, // "/" means from the root, root is localHost Applayout
+        element: <AboutFunctional />, 
         children: [
           {
             path: "profile", //here don't use / to subChild otherwise it will get appended to http://localhost:1234/profile like this but we want http://localhost:1234/about/profile
