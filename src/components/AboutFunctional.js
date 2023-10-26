@@ -1,4 +1,4 @@
-// we are not using this file just kept here for reference for making notes 
+// we are not using this file just kept here for reference for making notes
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon you want to use
 import { Link, Outlet } from "react-router-dom";
@@ -9,8 +9,7 @@ import { useState } from "react";
 import logoImage from "../assests/img/logoFoodVilla.jpeg";
 
 const AboutFunctional = () => {
-
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   console.log("functional about parent ");
   return (
@@ -77,7 +76,7 @@ const AboutFunctional = () => {
               <span>Tasty & Fresh Food</span>
             </h1>
             <h4>
-              "Better you will feel if you eat a Food<span>Fire</span> healthy
+              "Better you will feel if you eat a Food<span>Villa</span> healthy
               meal"
             </h4>
           </div>
@@ -88,6 +87,8 @@ const AboutFunctional = () => {
             />
           </div>
         </div>
+
+        {/* <Outlet /> */}
       </div>
     </>
   );

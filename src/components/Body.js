@@ -4,15 +4,16 @@ import "../../FoodVilla.css";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterList } from "../utils/helper";
 
 // Filter the restaurant data according input type
-const filterList = (text, objArray) => {
-  const filterData = objArray.filter((objArray) =>
-    objArray?.name?.toLowerCase().includes(text.toLowerCase())
-  );
+// const filterList = (text, objArray) => {
+//   const filterData = objArray.filter((objArray) =>
+//     objArray?.name?.toLowerCase().includes(text.toLowerCase())
+//   );
 
-  return filterData;
-};
+//   return filterData;
+// };
 
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {

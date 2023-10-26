@@ -10,87 +10,16 @@ import {
 import Shimmer, { MenuShimmer } from "./Shimmer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import useRestaurant from "../Hooks/useRestaurant";
+import useMenu from "../Hooks/useMenu";
 
 const RestaurantMenu = () => {
   const params = useParams();
   console.log("id", params);
   const { id } = params;
-  const [restaurants, setRestaurants] = useState(null);
-  const [menuItems, setMenuItems] = useState([]);
-
-  useEffect(() => {
-    console.log("useffect");
-    const data = getRestaurants();
-    // call getRestaurantInfo function so it fetch api data and set data in restaurant state variable
-  }, []);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     await getRestaurants();
-  //   };
-  //   fetchData();
-  // }, []);
-
-  async function getRestaurants() {
-    try {
-      // debugger;
-      const response = await fetch(swiggy_menu_api_URL + id);
-      const Json = await response.json();
-      const restaurantData =
-        Json?.data?.cards
-          ?.filter((x) => x.card)
-          ?.find((x) => {
-            return (
-              x?.card?.card["@type"] ===
-              "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
-            );
-          })?.card?.card?.info || null;
-      // debugger;
-      setRestaurants(restaurantData);
-      // debugger;
-
-      console.log(
-        "important data to display",
-        Json?.data?.cards
-          .find((x) => x.groupedCard)
-          ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
-          ?.filter(
-            (x) =>
-              x["@type"] ==
-              "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-          )
-          ?.map((x) => x.itemCards)
-          .flat()
-          ?.map((x) => x.card?.info) || []
-      );
-
-      // Set menu item data
-      const menuItemsData =
-        Json?.data?.cards
-          .find((x) => x.groupedCard)
-          ?.groupedCard?.cardGroupMap?.REGULAR?.cards?.map((x) => x.card?.card)
-          ?.filter((x) => x["@type"] == MENU_ITEM_TYPE_KEY)
-          ?.map((x) => x.itemCards)
-          .flat()
-          .map((x) => x.card?.info) || [];
-
-      console.log("menu is not visible", menuItemsData);
-
-      const uniqueMenuItems = [];
-      menuItemsData.forEach((item) => {
-        if (!uniqueMenuItems.find((x) => x.id === item.id)) {
-          uniqueMenuItems.push(item);
-        }
-        // debugger;
-        console.log("iterating  ", uniqueMenuItems);
-      });
-      setMenuItems(uniqueMenuItems);
-    } catch (error) {
-      console.log(error);
-      setMenuItems([]);
-      setRestaurants(null);
-    }
-  }
+  // const [restaurants, setRestaurants] = useState(null);
+  const menuItems = useMenu(id);
+  const restaurants = useRestaurant(id);
 
   ///restaurant details header
   //menu list
@@ -130,7 +59,7 @@ const RestaurantMenu = () => {
                 className="fas fa-star"
                 //   style={{ color: "blue" }}
               />
-              <span>{restaurants?.avgRating}</span> 
+              <span>{restaurants?.avgRating}</span>
             </div>
             <div className="restaurant-rating-slash">|</div>
             <div>{restaurants?.sla?.slaString}</div>
