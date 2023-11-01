@@ -105,6 +105,14 @@ const Body = () => {
   if (!restaurants) return null;
 
   // console.log("card  0 n", card0);
+  const [offline, setOffline] = useState(true);
+  if (offline) {
+    return (
+      <h1 style={{ margin: "100px 0px", colo: "red", textAlign: "center" }}>
+        You are not connected to Internet !
+      </h1>
+    );
+  }
 
   return (
     <>
@@ -178,7 +186,6 @@ const Body = () => {
       )}
 
       {
-      
         // EARLIER I WAS RENDERING SHIMMER BADSED UPON THE RESTAURANTS ARRAY'S LENGTH BUT I NOTICED INCONSITENCIES IN THE SHIMMER SO I USED A BOOLEAN VAR TO DO SHIMMER
         //{restaurants.length > 0 ? (
         //   <>
@@ -196,14 +203,12 @@ const Body = () => {
         //     </div>
         //   </>
         // ) :
-
         // (
         //   <>
         //     {console.log("SHIMERING>>>>>>>>>>>.........")}
         //     <Shimmer />
         //   </>
         // )
-
         // }
       }
     </>
