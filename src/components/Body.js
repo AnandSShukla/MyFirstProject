@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterList } from "../utils/helper";
+import useOnline from "../Hooks/useOnline";
 
 // Filter the restaurant data according input type
 // const filterList = (text, objArray) => {
@@ -18,6 +19,8 @@ import { filterList } from "../utils/helper";
 // Body Component for body section: It contain all restaurant cards
 const Body = () => {
   const [searchText, setSearchText] = useState("");
+  const isOnline = useOnline();
+
   // required array object
   const card0 = restaurantsList.map((obj) => {
     const allRest = obj.info;
@@ -105,8 +108,8 @@ const Body = () => {
   if (!restaurants) return null;
 
   // console.log("card  0 n", card0);
-  const [offline, setOffline] = useState(true);
-  if (offline) {
+
+  if (!isOnline) {
     return (
       <h1 style={{ margin: "100px 0px", colo: "red", textAlign: "center" }}>
         You are not connected to Internet !
