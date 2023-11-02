@@ -1,0 +1,79 @@
+custom hooks
+creating custom hooks from scratch 
+window.online event 
+useEffect return me clear eventListener
+useOnline is kind of early return.
+
+if there are thousands of components we cannot bundle them into a single Js file.
+like parcel does , it bundles all js code into a single js file.
+
+code chunking, lazy loading, code splitting , Dynamic Bundling etc are the same thing.
+
+in mmt
+by default load flights bundle and if user demands(clicks) on any other component then load that bundle, this is known as ondemand loading/dynamic loading.
+
+different bundle for different code.
+lazy() in react, which takes a callback function. 
+const instamart = lazy(()=>import("./components/Instamart")); this load/import instamart on user demand , earlier it was imported by default. we can see in network tab , that our instamart is loaded only when we click that link. 
+
+face a issue when link clicked ? ans below
+it takes some time to load this script, meanwhile react tries to render it and it doesn't finds it so suspends that loading. once page is loaded it doesn't reloads beacause it is SPA. 
+loading for the first time react tries to load something which is not even there yet loaded so thats why we get error, 
+we have to use something named as Suspense from react to handle this. 
+
+as soon as our component is loaded in between we can show shimmer by passing a additional fallback prop to the Susspense.
+<Suspense  fallback={<Shimmer/>}>
+</YOURACTUALELEMENT>
+</Suspense>
+
+or like this 
+<Suspense  fallback={<h1>loading.....</h1>}>
+</YOURACTUALELEMENT>
+</Suspense>
+
+Never ever lazy load your component inside some other component. beacuse it will lazy load after each render, so always lazy load on top level after import statement but not inside any component. if we keep on top level we know that it will lazy load once and on re reneder it will not load again and again. 
+
+
+
+
+Lazy loading in React and showing a shimmer while waiting for an API response serve different purposes, but they can be related in the context of user experience. Here's an easy way to remember and differentiate them:
+
+**Lazy Loading in React**:
+- Lazy loading in React is a technique to improve the initial loading time of your application.
+- It involves loading components, routes, or resources only when they are needed, typically when a user navigates to a specific part of your application.
+- Lazy loading helps reduce the initial bundle size and speeds up the initial rendering of your application by splitting it into smaller chunks.
+- Think of it as "loading parts of your app on-demand to make it faster."
+
+**Shimmer While Waiting for API Response**:
+- Showing a shimmer (a loading animation or placeholder) while waiting for an API response is a user interface technique to provide feedback to users that content is being fetched.
+- It's used to enhance the user experience by indicating that something is happening in the background.
+- This shimmer is typically displayed when you've made an API request and are waiting for the data to arrive.
+- Think of it as "a loading animation indicating that the requested data is on its way."
+
+In summary, you can differentiate them this way:
+- Lazy loading is about optimizing the initial loading of your application by loading parts of it when needed.
+- Shimmer for API responses is about providing feedback to users that data is being fetched in real-time.
+
+While they serve different purposes, you can combine them for a smoother user experience. For example, you can use lazy loading to load a component with a shimmer while waiting for its content, making your app feel faster and more responsive.
+
+while lazy loading and API requests are not the same thing, you can use them together to optimize the loading of components that display data fetched from APIs.
+
+// Load the component with code-splitting
+const MyLazyLoadedComponent = React.lazy(() => import('./MyComponent'));
+
+//don't go deep just read it .
+// Make an API request to get data and that data will be passed as a prop to loaded component
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => {
+    // Display the data in the lazy-loaded component
+    ReactDOM.render(
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <MyLazyLoadedComponent data={data} />
+      </React.Suspense>,
+      document.getElementById('root')
+    );
+  });
+
+
+

@@ -112,7 +112,7 @@ const Body = () => {
   if (!isOnline) {
     return (
       <h1 style={{ margin: "100px 0px", colo: "red", textAlign: "center" }}>
-        You are not connected to Internet !
+        🔴 You are not connected to Internet !
       </h1>
     );
   }
