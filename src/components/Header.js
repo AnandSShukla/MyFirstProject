@@ -31,19 +31,26 @@ const styleObj = { backgroundColor: "red", fontSize: "18px" };
 // const NameOfRest = "FOOD VILLA";
 //Nav links in Right
 export const HeaderComponent = () => {
-  //offload this logic of checking login status to a custom hook
-  // const [isLogged, setIslogged] = useState(false);
-  const [isLogged, setIsLogged] = useAuth();
-  const isOnline = useOnline();
   const navigate = useNavigate();
+
   // call custom hook useLocalStorage for getting localStorage value of user
   const [getLocalStorage, , clearLocalStorage] = useLocalStorage("user");
-  useEffect(() => {
-    // if value of getLocalStorage is equal to null setIsLoggedin to false
-    if (getLocalStorage === null) {
-      setIsLogged(false);
-    }
-  }, [getLocalStorage]);
+
+  // const [isLogged, setIslogged] = useState(false);
+  const [isLogged, setIsLogged] = useAuth();
+
+    useEffect(() => {
+      // if value of getLocalStorage is equal to null setIsLoggedin to false
+      if (getLocalStorage === null) {
+        setIsLogged(false);
+      }
+    }, [getLocalStorage]);
+
+  //offload this logic of checking login status to a custom hook
+
+  const isOnline = useOnline();
+
+
   return (
     <div className="header">
       <Title />

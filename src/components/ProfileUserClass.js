@@ -17,7 +17,7 @@ class ProfileUserClass extends Component {
     // console.log("ProfileUserClass child componentWillUnmount");
   }
   render() {
-    const { name, avatar_url, bio,login } = this.props.data; // accessing full json data as props from parent class `ProfileClass`
+    const { name, avatar_url, bio, login } = this.props.data; // accessing full json data as props from parent class `ProfileClass`
     // console.log("ProfileUserClass child render");
     return (
       <div className="profile-user-card">
