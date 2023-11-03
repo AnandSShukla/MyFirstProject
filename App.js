@@ -1,6 +1,5 @@
 // ## Namaste React Course by Akshay Saini
-// Chapter 05 - Let's get Hooked!
-
+// Chapter 09 - Optimizing our App
 import React, { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { HeaderComponent } from "./src/components/Header";
@@ -119,16 +118,24 @@ const appRouter = createBrowserRouter([
         path: "/",
         element: <Body />,
       },
-      {
-        path: "login",
-        element: <Login />,
-      },
+      //keeping it out of children because there header and footer will be always displayed , but that we do not want
+      // {
+      //   path: "login",
+      //   element: <Login />,
+      // },
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
       },
     ],
   },
+
+  //App layout ke bahar karne se ab header aur footer hat jayega 
+  {
+    path: "login",
+    element: <Login />,
+  },
+
   // {
   //   path: "/about",
   //   element: <About />,
